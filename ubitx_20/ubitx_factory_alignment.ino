@@ -27,7 +27,11 @@ void factory_alignment(){
   printLine2("#2 BFO");
   delay(1000);
 
+#ifdef UBITX_V5  
+  usbCarrier = 11053000l;
+#else
   usbCarrier = 11994999l;
+#endif
   menuSetupCarrier(1);
 
   if (usbCarrier == 11994999l){

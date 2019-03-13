@@ -58,7 +58,11 @@ uint8_t SI5351BX_ADDR;                    // I2C address of Si5351   (variable f
 // User program may have reason to poke new values into these 3 RAM variables
 uint32_t si5351bx_vcoa = (SI5351BX_XTAL*SI5351BX_MSA);  // 25mhzXtal calibrate
 uint8_t  si5351bx_rdiv = 0;             // 0-7, CLK pin sees fout/(2**rdiv)
+#ifdef UBITX_V5
+uint8_t  si5351bx_drive[3] = {3, 3, 3}; // 0=2ma 1=4ma 2=6ma 3=8ma for CLK 0,1,2
+#else
 uint8_t  si5351bx_drive[3] = {1, 1, 1}; // 0=2ma 1=4ma 2=6ma 3=8ma for CLK 0,1,2
+#endif
 uint8_t  si5351bx_clken = 0xFF;         // Private, all CLK output drivers off
 int32_t calibration = 0;
 
